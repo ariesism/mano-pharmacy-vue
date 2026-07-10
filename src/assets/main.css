@@ -1,0 +1,198 @@
+/* 瑪諾醫藥生技 - Tailwind CSS v4 全域樣式系統 */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #DD6A82;
+  --color-primary-hover: #c9556d;
+  --color-secondary: #34AD54;
+  --color-light: #F9E5E7;
+  --color-dark: #091E3E;
+  --color-dark-light: #112a52;
+  --color-text-color: #556275;
+  --color-text-dark: #091E3E;
+  
+  --font-sans: 'Nunito', 'Rubik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+  
+  --shadow-card: 0 10px 30px rgba(9, 30, 62, 0.05);
+  --shadow-card-hover: 0 15px 40px rgba(221, 106, 130, 0.15);
+  
+  --transition-custom: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: #ffffff;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-color);
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  #app {
+    background-color: #ffffff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-dark);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-custom);
+  }
+}
+
+/* Custom layout and layout utility classes */
+@utility container {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px;
+}
+
+@utility section {
+  padding: 30px 0;
+}
+
+@utility bg-light-sec {
+  background-color: #f8f9fa;
+}
+
+@utility bg-dark-sec {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* Section Title component */
+@utility section-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  & h5 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+  }
+
+  & h1 {
+    font-size: 2.25rem;
+    color: var(--color-text-dark);
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 800;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: var(--transition-custom);
+    }
+  }
+
+  &:hover h1::after {
+    width: 120px;
+  }
+
+  &.align-left {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+
+    & h1::after {
+      left: 0;
+      transform: none;
+    }
+  }
+}
+
+/* Buttons utility classes */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-custom);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  gap: 8px;
+  text-decoration: none;
+}
+
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(221, 106, 130, 0.2);
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(221, 106, 130, 0.35);
+  }
+}
+
+@utility btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(52, 173, 84, 0.2);
+
+  &:hover {
+    background-color: #2b9347;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 173, 84, 0.35);
+  }
+}
+
+@utility btn-white {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(221, 106, 130, 0.25);
+  }
+}
+
+@utility btn-outline-white {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+  }
+}
